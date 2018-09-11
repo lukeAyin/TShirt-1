@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Lumise Products Designer | Live Demo</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport" />
+    <link rel="stylesheet" href="https://demo.lumise.com/core/assets/css/app.css?version=1.6.4">
+    <link rel="stylesheet" media="only screen and (max-width: 1024px)" href="https://demo.lumise.com/core/assets/css/responsive.css?version=1.6.4">
+    <!---Lumise Header Hook Start--->
+    <meta name="description" content="The online product designer tool" />
+    <meta property="og:title" content="Lumise Products Designer | Live Demo" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://demo.lumise.com/editor.php" />
+    <meta property="og:image" content="https://demo.lumise.com/data/settings/logowhite.png" />
+    <meta property="og:description" content="The online product designer tool" />
+    <meta property="og:site_name" content="Demo.lumise.com" />
+    <link rel="icon" type="image/x-icon" href="https://demo.lumise.com/data/settings/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://demo.lumise.com/data/settings/favicon.png" />
+    <!---Lumise Header Hook END--->
+</head>
+<body>
+<div class="wrapper">
+    <div id="LumiseDesign" data-site="https://lumise.com" data-processing="true" data-msg="Initializing..">
+        <div id="lumise-navigations" data-navigation="">
+            <a data-view="logo" href="https://demo.lumise.com/">
+                <img src="https://demo.lumise.com/data/settings/logowhite.png" />
+            </a>
+            <ul data-block="left" data-resp="file">
+                <li data-view="sp"></li>
+                <li data-tool="file" data-view="list">
+                    <span>File</span>
+                    <ul data-view="sub" id="lumise-file-nav">
+                        <li data-func="import">
+                            <span>Import file</span><small>(Ctrl+O)</small>
+                            <input type="file" id="lumise-import-json" />
+                        </li>
+                        <li data-func="clear">
+                            <span>Clear all</span><small>(Ctrl+E)</small>
+                        </li>
+                        <li data-view="sp"></li>
+                        <li data-func="save">
+                            <span>Save to My Designs</span><small>(Ctrl+S)</small>
+                        </li>
+                        <li data-func="saveas">
+                            <span>Save as file</span><small>(Ctrl+Shift+S)</small>
+                        </li>
+
+                        <li data-view="sp"></li>
+                        <li>
+                            <ul data-view="sub2">
+                                <li data-func="download" data-type="jpg">JPG</li><li data-func="download" data-type="png">PNG</li><li data-func="download" data-type="svg">SVG</li><li data-func="download" data-type="pdf">PDF</li><li data-func="download" data-type="json">FILE (importable *.lumi)</li>							</ul>
+                            <span>Download design</span>
+                            <small data-view="sub2"><i class="lumisex-ios-arrow-forward"></i></small>
+                        </li>
+                    </ul>
+                </li>
+                <li data-tool="designs" data-callback="designs">
+                    <span>Designs</span>
+                    <ul data-view="sub">
+                        <header>
+                            <h3>
+                                My design templates						<span id="lumise-designs-search">
+							<input type="search" placeholder="Search designs" />
+						</span>
+                            </h3>
+                            <i class="lumisex-android-close close" title="Close"></i>
+                        </header>
+                        <li>
+                            <ul id="lumise-designs-category">
+                                <li data-active="true">
+                                    <text><i class="lumisex-ios-arrow-forward"></i> All Categories</text>
+                                </li>
+                                <li>
+                                    <text><i class="lumisex-ios-arrow-forward"></i> Category #1</text>
+                                    <func>
+                                        <i class="lumisex-edit" title="Edit Category"></i>
+                                        <i class="lumisex-android-delete" title="Delete Category"></i>
+                                    </func>
+                                </li>
+                                <li data-func="add"><i class="lumisex-android-add"></i> New Category</li>
+                            </ul>
+                            <ul id="lumise-saved-designs">
+                                <p class="empty">You have not saved any designs yet!<br>After designing, press Ctrl+S to save your designs in here.						</p>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li data-tool="print">
+                    <span>Print</span>
+                    <ul data-view="sub" id="lumise-print-nav" data-align="center">
+                        <header>
+                            <h3>
+                                Print design					</h3>
+                            <i class="lumisex-android-close close" title="Close"></i>
+                        </header>
+                        <li>
+                            <label>Paper Size:</label>
+                            <select name="select-size">
+                                <option value="42 x 59.4">A2</option>
+                                <option value="29.7 x 42">A3</option>
+                                <option value="21 x 29.7" selected>A4</option>
+                                <!--option value="59.4x84.1">A1 (59.4 x 84.1cm)</option>
+                                <option value="84.1x118.9">A0 (84.1 x 118.9cm)</option-->
+                                <!--option value="screen">Screen Printing</option>
+                                <option selected="selected" value="DTG">DTG Printing</option>
+                                <option value="sublimation">Sublimation Printing</option>
+                                <option value="embroidery">Embroidery</option>
+                                <option value="GDH">Laser</option>
+                                <option value="OIJ">pojpo</option-->
+                                <option value="14.8 x 21">A5</option>
+                                <option value="10.5 x 14.8">A6</option>
+                                <option value="7.4 x 10.5">A7</option>
+                                <option value="5.2 x 7.4">A8</option>
+                                <option value="3.7 x 5.2">A9</option>
+                                <option value="2.6 x 3.7">A10</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>Custom size:</label>
+                            <input type="text" name="size" value="21 x 29.7" />
+                        </li>
+                        <li>
+                            <input type="radio" name="print-unit" checked data-unit="cm" /><small>cm (300 PPI)</small>
+                            <input type="radio" name="print-unit" data-unit="inch" /><small> inch (300 PPI)</small>
+                        </li>
+                        <li>
+                            <label>Orientation:</label>
+                            <select name="orientation">
+                                <option value="portrait" selected>Portrait</option>
+                                <option value="landscape">Landscape</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>Include base:</label>
+                            <div class="lumise-switch">
+                                <input id="lumise-print-base" type="checkbox" value="" class="lumise-toggle-button">
+                                <span class="lumise-toggle-label" data-on="YES" data-off="NO"></span>
+                                <span class="lumise-toggle-handle"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <span id="lumise-print-stage"></span>
+                            <button class="lumise-btn" data-func="print">
+                                <i class="lumisex-printer"></i> Print Now					</button>
+                            <button class="lumise-btn gray" data-func="download">
+                                <i class="lumisex-android-download"></i> Download					</button>
+                        </li>
+                    </ul>
+                </li>
+                <li data-tool="share">
+			<span>
+				Share			</span>
+                    <ul data-view="sub" class="lumise-tabs-nav" data-align="center" id="lumise-shares-wrp" data-nav="link">
+                        <header>
+                            <h3>
+                                <span data-tna="link">Share Your Design</span>
+                                <span data-tna="history">
+							<a href="#" data-func="nav" data-nav="link">
+								<i class="lumisex-android-arrow-back" data-func="nav" data-nav="link"></i>
+								Back to share							</a>
+						</span>
+                            </h3>
+                            <i class="lumisex-android-close close" title="Close"></i>
+                        </header>
+                        <li data-view="link" data-active="true">
+                            <p data-phase="1" class="mb1">
+                                Create the link to share your current design for everyone					</p>
+                            <p data-view="link" class="mb1" data-phase="1">
+                                <input type="text" placeholder="Enter the title of design" id="lumise-share-link-title" />
+                            </p>
+                            <p data-phase="1">
+                                <button class="lumise-btn right" data-func="create-link">
+                                    Create link						</button>
+                                <button class="lumise-btn right white mr1"  data-nav="history" data-func="nav">
+                                    View history						</button>
+                            </p>
+                            <p class="notice success" data-phase="2">
+                                Your link has been created successfully					</p>
+                            <p data-view="link-share" data-phase="2" data-func="copy" data-msg="The link was copied" title="Click to copy the link"></p>
+                            <p class="mt1 mb1 right" data-phase="2">
+                                <b>Share to:</b>
+                                <button data-network="facebook">
+                                    <i class="lumisex-social-facebook"></i> Facebook
+                                </button>
+                                <button data-network="pinterest">
+                                    <i class="lumisex-social-pinterest"></i> Pinterest
+                                </button>
+                                <button data-network="twitter">
+                                    <i class="lumisex-social-twitter"></i> Twitter
+                                </button>
+                            </p>
+                            <p class="mt1" data-phase="2">
+                                <button class="lumise-btn right gray" data-func="do-again">
+                                    Create another						</button>
+                                <button class="lumise-btn right white mr1"  data-nav="history" data-func="nav">View history</button>
+                            </p>
+                        </li>
+                        <li data-view="history"></li>
+                    </ul>
+                </li>
+                <li data-tool="help">
+			<span>
+				Help			</span>
+                    <ul data-view="sub" class="lumise-tabs-nav">
+                        <li data-view="header">
+                            <h3 data-view="title">Quick help</h3>
+                            <i class="lumisex-android-close close" title="Close"></i>
+                            <nav>
+                                <span data-active="true" data-nav="tab-1" data-func="nav">Hot keys</span><span data-nav="tab-2" data-func="nav">Design Editor</span><span data-nav="tab-3" data-func="nav">Cart</span><span data-nav="tab-4" data-func="nav">Product Base</span><span data-nav="tab-5" data-func="nav">Printing Type</span><span data-nav="tab-6" data-func="nav">About</span>					</nav>
+                        </li>
+                        <li class="smooth" data-view="tab-1"  data-active="true"><b data-view="key">ctrl</b>+<b data-view="key">a</b>
+                            Select all objects<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">d</b>
+                            Double the activate object<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">e</b>
+                            Clear all objects<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">s</b>
+                            Save current stage to my design<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">o</b>
+                            Open a file to import design<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">p</b>
+                            Print<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">+</b>
+                            Zoom out<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">-</b>
+                            Zoom in<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">0</b>
+                            Reset zoom<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">z</b>
+                            Undo changes<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">shift</b>+<b data-view="key">z</b>
+                            Redo changes<br>
+                            <b data-view="key">ctrl</b>+<b data-view="key">shift</b>+<b data-view="key">s</b>
+                            Download current design<br>
+                            <b data-view="key">delete</b> Delete the activate object<br>
+                            <b data-view="key">←</b> Move the activate object to left<br>
+                            <b data-view="key">↑</b> Move the activate object to top<br>
+                            <b data-view="key">→</b> Move the activate object to right<br>
+                            <b data-view="key">↓</b> Move the activate object to bottom<br>
+                            <b data-view="key">shift</b>+<b data-view="key">←</b>
+                            Move the activate object to left 10px<br>
+                            <b data-view="key">shift</b>+<b data-view="key">↑</b>
+                            Move the activate object to top 10px<br>
+                            <b data-view="key">shift</b>+<b data-view="key">→</b>
+                            Move the activate object to right 10px<br>
+                            <b data-view="key">shift</b>+<b data-view="key">↓</b>
+                            Move the activate object to bottom 10px<br></li><li class="smooth" data-view="tab-2" ><h2>Resources</h2>
+                        <p>The resource is placed you can upload your image, reaching clipart/shape stocks to add to your design. Of course, in here you can see the product info and attributes or printing methods as well.</p>
+                        <p>We have tabs bellow: <strong>Product</strong>, <strong>Templates</strong>, <strong>Layers</strong>, <strong>Text</strong>, <strong>Cliparts</strong>, <strong>Shapes</strong>, <strong>Images</strong>, <strong>Drawing</strong></p>
+                        <h4>Product Info</h4>
+                        <p>This tab includes product info and attribute. From here you can change to other product quick as quick via Change Product button. There are colors option for you select to place an order or add your colors if shopper enables the current product. When you change an attribute or select printing method the price is updated automatically.</p>
+                        <p>You can also choose other product to design.</p>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/12/products.jpg" alt="" width="384">
+                        <h4>Templates</h4>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/12/templatess.jpg" alt="" width="384">
+                        <p>There are many available templates, you can click to add templates to the product</p>
+                        <h4>Layers</h4>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/06/editor-layers-e1499153837513.png" width="384">
+                        <p>All layers which you added to design display on this tab. You can show/hide layers via visibility option. Or delete layers.</p>
+                        <h4>Text</h4>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/12/editor-text.jpg" alt="" width="384">
+                        <p>To use text in your design, just reach to this tab and select pre-made texts or select font style you want to add then click to add them.</p>
+                        <p>To show more font styles, just press Load more 1000+ Fonts the new popup show up which allow you add more fonts to list.</p>
+                        <h4>Cliparts</h4>
+                        <p>This tab includes images which uploaded from admin panel by the shopper or from Lumise stocks.</p>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/06/editor-cliparts.png" alt="" width="384">
+                        <p>To add clipart to the design area, just click on them.</p>
+                        <h4>Shapes</h4>
+                        <p>Like clipart, this tab allow customer reach to ideas they want to use via the search box and categories filter. But Shapes are vector format which helps design have smooth details when zoom or export to big size without mess up.</p>
+                        <h4>Images</h4>
+                        <p>This tab, allows you upload your pictures, or get them from your social account or some image stocks such as Pixabay, Openclipart.</p>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/12/lib-img.jpg" alt="" width="384">
+                        <h4>Drawing</h4>
+                        <p>This tab is setting to prepare draw info. You can select a color, size of the bush.</p>
+                        <h2>Design Area</h2>
+                        <p>This is the most important part of Lumise editor. It is preview and workspace for all layers you added.</p>
+                        <p>To adjust layer, just use the mouse to click on them or select all of them via drag mouse.</p>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/06/design-area.png" alt="" width="384">
+                        <h2>Image Toolbar</h2>
+                        <p>With an image added into design area. There are some options for it. To enable options, just click on an image and see the top toolbar as below:</p>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/06/image-tools.png" alt="" width="384">
+                        <h4>Image mask</h4>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/06/text-mask-effect.png" alt="" width="384">
+                        <p>Do you want to make text with complex background from another image?</p>
+                        <p>Yeah, it does that with Text Mask feature.</p>
+                        <p>How to create text with mask background? View more</p>
+                        <h4>Remove Background</h4>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/06/remove-background.png" alt="" width="384">
+                        <h4>Image Filter Effects</h4>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/06/filters.png" alt="" width="384">
+                        <h4>Crop Image</h4>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/06/crop.png" alt="" width="384">
+                        <h2>Menu</h2>
+                        <p>As an application on the desktop, there are some menus included on Lumise.</p>
+                        <h4>File</h4>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/06/menu-file.png" alt="" width="384">
+                        <p><strong>New Design</strong>: Start new empty design for the current product.</p>
+                        <p><strong>Import Design</strong>: Import design from your local which you exported from Lumise</p>
+                        <p><strong>Clear all</strong>: Clear current design to empty</p>
+                        <p><strong>Save as file</strong>: current export content on design area to a file</p>
+                        <p><strong>Make a Copy</strong>: Duplicate your current design content on area to new design</p>
+                        <p><b>Download</b>: export your design to another format: SVG, JPG, PNG, JSON, PDF</p>
+                        <h4>My Design</h4>
+                        <p>This is management of all your designs on current PC</p>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/11/editor-menu-designs-1024x494.png" alt="" width="384">
+                        <p>With each design, you can duplicate or focus edit and delete it.</p>
+                        <p>To start new design just press New Design button</p>
+                        <h4>Print</h4>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/06/editor-menu-print.png" alt="" width="384">
+                        <p>Just select a size or add your custom size to print or download result.</p>
+                        <h4>Help</h4>
+                        <p>Some guide for you to use Lumise Design Editor easier.</p>
+                        <h4>Undo/Redo</h4>
+                        <p>They are useful featured on Lumise; you can track back to your works easier.</p></li><li class="smooth" data-view="tab-3" ><p>When you finish designing the product, you can click "Process" to add the product to your cart.</p>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/12/add-cart.jpg" alt="" width="384">
+                        <p>Then you can choose "Start new product" or "Checkout"</p>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/12/sucess.jpg" alt="" width="384">
+                        <h4>Edit cart</h4>
+                        <p>You can click cart icon to see your cart</p>
+                        <img src="https://docs.lumise.com/wp-content/uploads/2017/11/minicart-1024x714.png" alt="" width="384"></li><li class="smooth" data-view="tab-4" ><p>Firstly, we must understand what Product Base is.</p>
+                        <p><strong>Product Base</strong> looks like as a design template which used by many similar products from CMS can use to allow user edit or selling directly this product with a template design.</p>
+                        <h2>Management</h2>
+                        <p>To manage <strong>Product Base</strong>, just go to <strong>Admin panel</strong>  > <strong>Product Base</strong> then you can see some menu here.</p>
+                        <p>Firstly, the list of all products added.</p>
+                        <p><a href="https://docs.lumise.com/wp-content/uploads/2017/06/cliparts.png"><br>
+                        </a><img class="aligncenter wp-image-1987 size-full" src="https://docs.lumise.com/wp-content/uploads/2017/06/products-768x533.png" width="384" /></p>
+                        <p>In this area, you can see the stages thumbnail of product, name, SKU and some filter options on the top as well.</p>
+                        <p>You can customize the display of this screen’s contents in some ways.</p>
+                        <p><strong>Bulk Actions</strong> : You can also edit or remove multiple items at once. Select the items you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Action.</p>
+                        <ul>
+                            <li><strong>Active</strong> : Show selected products on product list when assigning with CMS product.</li>
+                            <li><strong>Deactive</strong> : Hide selected products on product list when assigning with CMS product.</li>
+                            <li><strong>Delete</strong> : Remove selected products.</li>
+                        </ul>
+                        <h2>Add/Edit Product Base</h2>
+                        <p>To add a new item, just click on menu or button Add New Product Base. And select on of item in the list to edit that one.</p>
+                        <p>You got screen bellow after that:</p>
+                        <p><img class="aligncenter wp-image-1986 size-full" src="https://docs.lumise.com/wp-content/uploads/2017/06/product-details-768x769.png" width="384" /></p>
+                        <p>There are 3 tabs for each product:</p>
+                        <ul>
+                            <li><strong>Details</strong> – Some details information for product</li>
+                            <li><strong>Design</strong> – Config designs for each stage of product such as front, back, left, right</li>
+                            <li><strong>Attributes</strong> – Config attributes of products to use for add to cart.</li>
+                        </ul>
+                        <h3>Details</h3>
+                        <p>There are many fields to put into a product.</p>
+                        <ul>
+                            <li><strong>Name</strong> : The name of product which displays on the list</li>
+                            <li><strong>Price</strong> : The base price for products. The total product of product will depend on price base, attributes prices, printing method selected.</li>
+                            <li><strong>CMS Product ID</strong>: The main product CMS which assigned to this product base. Each product base must have one main product CMS, but multi CMS product can be assigned to a product base.</li>
+                            <li><strong>Description</strong>: Short description of this product.</li>
+                            <li><strong>Categories</strong>: Select one or more categories which product base belong to. Helpful on sorting items</li>
+                            <li><strong>Printing Techniques</strong>: Printing methods which can apply to this product base.</li>
+                            <li><strong>Active</strong>: Enable/Disable clipart on front-end.</li>
+                        </ul>
+                        <h3>Design</h3>
+                        <p><img class="aligncenter wp-image-2392 " src="https://docs.lumise.com/wp-content/uploads/2017/11/product-design-768x866.png" width="384" /></p>
+                        <p>There are many options for a design of a product. The important is design area.</p>
+                        <p>Lumise support drag and drop method for you can arrange area and size range as well.</p>
+                        <ul>
+                            <li><strong>Allow Change Color</strong>
+                                <ul>
+                                    <li><strong>No display product color</strong>: disable select product for product, it means product just have one color pre-selected</li>
+                                    <li><strong>Only choose from set of colors</strong>: User can change product colors, but they just can choose from set of colors</li>
+                                    <li><strong>Choose from a set of color and color picker</strong>: It’s mean there is not limited to color for this products. The user can select from a set of colors or put their own via color picker.</li>
+                                </ul>
+                            </li>
+                            <li><b>Set Product Colors</b>: Choose and add colors for product</li>
+                            <li><b>Configure Stages</b>: Setup design area and design base for each stage.</li>
+                        </ul>
+                        <p> </p>
+                        <p><span style="color: #ff0000;"><em><strong>Notice</strong>: The great feature on this tab is assign pre templates for stages of the product. It is helpful in case you want to sell directly product or just set default template to edit for users can start customizing.</em></span></p>
+                        <p> </p>
+                        <h3>Attributes</h3>
+                        <p>Lumise support follows product attribute types:</p>
+                        <ul>
+                            <li><strong>Size</strong> – the set of sizes attribute for a product. You can add any size you want</li>
+                            <li><strong>Dropdown</strong> – a list of dropdown select items of attribute</li>
+                            <li><strong>Text</strong> : The text box for user can set their notice when add to cart a product</li>
+                            <li><strong>Upload</strong>: User can upload their notice via this type attribute</li>
+                            <li><strong>Radio</strong>: Display list of option for one attribute on product</li>
+                            <li><strong>Checkbox</strong>: Display list of options for multi-select values on an attribute.</li>
+                        </ul>
+                        <p><img class="aligncenter wp-image-1984 size-full" src="https://docs.lumise.com/wp-content/uploads/2017/06/product-attributes-768x760.png" width="384" /></p>
+                        <p>Of course, each of them has price base and require once checkout as well.</p>
+                        <p>After filling your content, just press the Save Product Base button to store data.</p>
+
+                        <p>Checkout <a href="https://docs.lumise.com" target="_blank">Lumise Documentation</a></p></li><li class="smooth" data-view="tab-5" ><p>You have to create methods for users select when purchasing a product.</p>
+                        <p>To manage them, just go to <strong>Admin Panel</strong> > <strong>Printing Types</strong></p>
+                        <p><img class="aligncenter wp-image-2041 size-full" src="https://docs.lumise.com/wp-content/uploads/2017/06/printings-768x531.png" width="384" /></p>
+                        <p>In this area, you can see the printing thumbnail, name, description and some filter options on the top as well.</p>
+                        <p><strong>Bulk Actions</strong>: You can also edit or remove multiple items at once. Select the items you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Action.</p>
+                        <ul>
+                            <li><strong>Delete</strong>: Remove selected printing methods.</li>
+                        </ul>
+                        <h2>Add/Edit Printing</h2>
+                        <p>To add a new item, just click on menu or button Add New Printing. And select on of item in the list to edit that one.</p>
+                        <p>You got screen bellow after that:</p>
+                        <p><img class="aligncenter wp-image-2040 size-full" src="https://docs.lumise.com/wp-content/uploads/2017/06/printing-768x1081.png" width="384" /></p>
+                        <p>There are some fields to put into a method.</p>
+                        <ul>
+                            <li><strong>Printing Title</strong>: The name of method which displays the list</li>
+                            <li><strong>Printing thumbnail</strong>: Upload your own preview thumbnail for this method.</li>
+                            <li><strong>Description: </strong>Some describe text for this method.</li>
+                            <li><strong>Calculate Price</strong>: The config for price calculate a price for this method.</li>
+                            <li><strong>Active</strong>: Enable/Disable shape on front-end.</li>
+                        </ul>
+                        <p>After filling your content, just press the Save Printing button to store data.</p>
+                        <h2><strong>Calculate Price</strong></h2>
+                        <p>Each method has own way to calculate the price. The Lumise provide some options to enable that.</p>
+                        <p>Firstly, Lumise allows you select format to calculate price base on values on each stage or from all values of stages via option <strong>Allow setup price for each stages</strong> setting. When turning on it, you can see more stages option show on current option calculate.</p>
+                        <p><strong>We have some options calculate as:</strong></p>
+                        <ul>
+                            <li>Base on a number of resources: Text, Clipart, Images, Uploaded Image…</li>
+                            <li>Base on number of colors: 1 Color, 2 Color or full color</li>
+                            <li>Base on size of print production: A1, A2,…A6</li>
+                            <li>Fixed price for each quantity</li>
+                        </ul>
+                        <p>Of course, all options base on the quantity range which user want to orders.</p>
+                        <p>For example, Their design has 2 colors and they order 7 products. And base price of product is $10</p>
+                        <p>We have calculated price table as:</p>
+                        <p><strong>quantity / 2 colors</strong></p>
+                        <p>———–</p>
+                        <p>5/0.5</p>
+                        <p>———–</p>
+                        <p>10/0.7</p>
+                        <p>So price for product is: <strong>(price base + option price )*quantity + printing price</strong> = $10*7 + 0.7 = $70.7</p>
+                        <p>option price :<i> equal 0 in this case.</i></p>
+                        <p>printing price : <i>0.7 because quanity in range of 5 and 10, So it take price of 10.</i></p>
+
+                        <p>Checkout <a href="https://docs.lumise.com" target="_blank">Lumise Documentation</a></p></li><li class="smooth" data-view="tab-6" ><span data-sub="about"><p><center><img src="https://demo.lumise.com/assets/images/logo.png?v2" height="80" /></center>
+                        </p>
+                        <p>
+Copyright © 2017 Lumise Inc.<br>
+All Rights Reserved.
+</p>
+<p data-view="powered" class="md">Powered by <a href="https://www.lumise.com/?utm_source=clients&utm_medium=powered_by&utm_campaign=live_sites&utm_term=powered_link&utm_content=demo.lumise.com%2Feditor.php%3F_ijt%3Ddd69ame3rafekbcu785kqc8mu9" target="_blank">Lumise</a> version 1.6.4</p></span></li>			</ul>
+                </li>
+                <li data-view="sp"></li>
+            </ul>
+            <svg id="lumise-nav-file" class="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" fill="#eee"><g xmlns="http://www.w3.org/2000/svg" id="__m">
+	<path d="M491.318,235.318H20.682C9.26,235.318,0,244.577,0,256s9.26,20.682,20.682,20.682h470.636    c11.423,0,20.682-9.259,20.682-20.682C512,244.578,502.741,235.318,491.318,235.318z"/><path d="M491.318,78.439H20.682C9.26,78.439,0,87.699,0,99.121c0,11.422,9.26,20.682,20.682,20.682h470.636    c11.423,0,20.682-9.26,20.682-20.682C512,87.699,502.741,78.439,491.318,78.439z"/><path d="M491.318,392.197H20.682C9.26,392.197,0,401.456,0,412.879s9.26,20.682,20.682,20.682h470.636    c11.423,0,20.682-9.259,20.682-20.682S502.741,392.197,491.318,392.197z"/>
+</g><g xmlns="http://www.w3.org/2000/svg" style="display:none;transform:scale(.85) translateY(3px);" id="__x"><path xmlns="http://www.w3.org/2000/svg" d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249    C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306    C514.019,27.23,514.019,14.135,505.943,6.058z"/><path d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636    c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"/></g></svg>
+            <ul data-block="left">
+                <li id="lumise-design-undo" title="Ctrl+Z" class="disabled">Undo</li>
+                <li id="lumise-design-redo" title="Ctrl+Shift+Z" class="disabled">Redo</li>
+            </ul>
+
+            <ul data-block="right">
+                <!-- To add your code here, use the hook $lumise->add_action('before_language', function(){}) -->
+                <li data-tool="languages" data-view="list">
+			<span>
+				<img src="https://demo.lumise.com/core/assets/flags/en.png" height="20" />
+				<text>Languages</text>
+			</span>
+                    <ul id="lumise-languages" data-view="sub" data-align="right">
+                        <li data-id="en">
+						<span><img src="https://demo.lumise.com/core/assets/flags/en.png" height="20" />
+						English</span>
+                            <i class="lumisex-android-done"></i>					</li>
+                        <li data-id="ar">
+						<span><img src="https://demo.lumise.com/core/assets/flags/ar.png" height="20" />
+						Arabic</span>
+                        </li>
+                        <li data-id="ja">
+						<span><img src="https://demo.lumise.com/core/assets/flags/ja.png" height="20" />
+						Japanese</span>
+                        </li>
+                        <li data-id="vi">
+						<span><img src="https://demo.lumise.com/core/assets/flags/vi.png" height="20" />
+						Vietnamese</span>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Avalable hook: after_language -->
+                <li data-view="sp"></li>		<!-- Avalable hook: before_cart -->
+                <li>
+                    <span class="lumise-price lumise-product-price">0.0</span>
+                </li>
+                <li data-tool="cart" id="lumise-cart-options">
+                    <button id="lumise-addToCart" title="My cart">
+                        <img src="https://demo.lumise.com/core/assets/images/cart.svg" with="25" alt="" />
+                    </button>
+                    <div data-view="sub" data-align="right" id="lumise-cart-items">
+                        <header>
+                            <h3>My Cart</h3>
+                            <i class="lumisex-android-close close" title="close"></i>
+                        </header>
+                        <ul data-view="items"></ul>
+                        <footer>
+                            <a href="#details" data-func="details" data-view="cart-details">
+                                Cart details <i class="lumisex-android-open"></i>
+                            </a>
+                            <a href="#checkout" data-func="checkout" class="lumise-btn-primary">
+                                Checkout						<i class="lumisex-android-arrow-forward"></i>
+                            </a>
+                        </footer>
+                    </div>
+                </li>
+                <li data-tool="proceed" data-callback="proceed">
+			<span>
+				<button id="lumise-continue-btn">
+					Proceed
+					<i class="lumisex-android-arrow-forward"></i>
+				</button>
+			</span>
+                    <div data-view="sub" data-align="right" id="lumise-product-attributes">
+                        <header>
+                            <h3>Product options</h3>
+                            <i class="lumisex-android-close close" title="close"></i>
+                        </header>
+                        <div id="lumise-cart-wrp" data-view="attributes" class="smooth">
+                            <div class="lumise-cart-options">
+                                <div class="lumise-prints"></div>
+                                <div class="lumise-cart-attributes"></div>
+                            </div>
+
+                            <div class="lumise-cart-fields-tpml">
+                                <div class="lumise-cart-field-text-tmpl lumise-cart-field">
+                                    <div class="lumise_form_group">
+                                        <span class="lumise-cart-field-label"> <em class="required">*</em></span>
+                                        <div class="lumise_form_content">
+                                            <textarea name="name" class="lumise-cart-param" required></textarea>								</div>
+                                    </div>
+                                </div>
+                                <div class="lumise-cart-field-upload-tmpl lumise-cart-field">
+                                    <div class="lumise_form_group">
+                                        <span class="lumise-cart-field-label"> <em class="required">*</em></span>
+                                        <div class="lumise_form_content">
+                                            <input type="hidden" required data-file-input="true" name="name" value="" class="lumise-cart-param" />
+                                            <input type="file" accept=".doc,.docx,.pdf,.zip,text/plain,application/zip,image/png,image/gif,image/jpeg,image/svg+xml" data-view="browse" data-label="Choose File" />								</div>
+                                    </div>
+                                </div>
+                                <div class="lumise-cart-field-select-tmpl lumise-cart-field">
+                                    <div class="lumise_form_group">
+                                        <span class="lumise-cart-field-label"> <em class="required">*</em></span>
+                                        <div class="lumise_form_content">
+                                            <select name="parent" class="lumise-cart-param" required></select>								</div>
+                                    </div>
+                                </div>
+                                <div class="lumise-cart-field-printing-tmpl lumise-cart-field">
+                                    <div class="lumise_form_group">
+                                        <span class="lumise-cart-field-label"> <em class="required">*</em></span>
+                                        <div class="lumise_form_content">
+                                            <div class="lumise_radios">
+                                                <div class="lumise-radio">
+                                                    <input type="radio" class="lumise-cart-param" name="printing" value="1" id="" required>
+                                                    <label class="lumise-cart-option-label" for=""></label>
+                                                </div>
+                                            </div>								</div>
+                                    </div>
+                                </div>
+                                <div class="lumise-cart-field-radio-tmpl lumise-cart-field">
+                                    <div class="lumise_form_group">
+                                        <span class="lumise-cart-field-label"> <em class="required">*</em></span>
+                                        <div class="lumise_form_content">
+                                            <div class="lumise_radios">
+                                                <div class="lumise-radio">
+                                                    <input type="radio" class="lumise-cart-param" name="printing" value="1" id="" required>
+                                                    <label class="lumise-cart-option-label" for=""> <em class="check"></em>
+                                                    </label>
+                                                    <em class="lumise-cart-option-desc"></em>
+                                                </div>
+                                            </div>								</div>
+                                    </div>
+                                </div>
+                                <div class="lumise-cart-field-checkbox-tmpl lumise-cart-field">
+                                    <div class="lumise_form_group">
+                                        <span class="lumise-cart-field-label"> <em class="required">*</em></span>
+                                        <div class="lumise_form_content">
+                                            <div class="lumise_checkboxes">
+                                                <div class="lumise_checkbox">
+                                                    <input type="checkbox" name="" class="lumise-cart-param action_check" value="1" id="" required>
+                                                    <label for="" class="lumise-cart-option-label">
+                                                        Checkbox <em class="check">
+                                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="11px" height="12px" viewBox="0 0 12 13" enable-background="new 0 0 12 13" xml:space="preserve">
+													<path fill="#4DB6AC" d="M0.211,6.663C0.119,6.571,0.074,6.435,0.074,6.343c0-0.091,0.045-0.229,0.137-0.32l0.64-0.64 c0.184-0.183,0.458-0.183,0.64,0L1.538,5.43l2.515,2.697c0.092,0.094,0.229,0.094,0.321,0l6.13-6.358l0.032-0.026l0.039-0.037 c0.186-0.183,0.432-0.12,0.613,0.063l0.64,0.642c0.183,0.184,0.183,0.457,0,0.64l0,0l-7.317,7.592 c-0.093,0.092-0.184,0.139-0.321,0.139s-0.228-0.047-0.319-0.139L0.302,6.8L0.211,6.663z"/>
+													</svg></em>
+                                                    </label>
+                                                    <em></em>
+                                                </div>
+                                            </div>								</div>
+                                    </div>
+                                </div>
+                                <div class="lumise-cart-field-size-tmpl lumise-cart-field">
+                                    <div class="lumise_form_group">
+                                        <span class="lumise-cart-field-label"> <em class="required">*</em></span>
+                                        <div class="lumise_form_content">
+                                            <div class="lumise-cart-field-quantity">
+                                                <em data-action="minus"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 491.858 491.858" style="enable-background:new 0 0 491.858 491.858;" xml:space="preserve" width="10px" height="10px"><g><g><path d="M465.167,211.613H240.21H26.69c-8.424,0-26.69,11.439-26.69,34.316s18.267,34.316,26.69,34.316h213.52h224.959    c8.421,0,26.689-11.439,26.689-34.316S473.59,211.613,465.167,211.613z" fill="#888"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></em>
+                                                <em class="lumise-cart-field-value">
+                                                    <input type="number" min="0" step="1" class="lumise-cart-param" name="quantity" value="1"/>
+                                                </em>
+                                                <em data-action="plus"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http d://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 491.86 491.86" style="enable-background:new 0 0 491.86 491.86;" xml:space="preserve" width="10px" height="10px"><g><g><path d="M465.167,211.614H280.245V26.691c0-8.424-11.439-26.69-34.316-26.69s-34.316,18.267-34.316,26.69v184.924H26.69    C18.267,211.614,0,223.053,0,245.929s18.267,34.316,26.69,34.316h184.924v184.924c0,8.422,11.438,26.69,34.316,26.69    s34.316-18.268,34.316-26.69V280.245H465.17c8.422,0,26.69-11.438,26.69-34.316S473.59,211.614,465.167,211.614z" fill="#888"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></em>
+                                                <em class="lumise-cart-field-label"></em>
+                                            </div>								</div>
+                                    </div>
+                                </div>
+                                <div class="lumise-cart-field-pack-tmpl lumise-cart-field">
+                                    <div class="lumise_form_group">
+                                        <span class="lumise-cart-field-label"> <em class="required">*</em></span>
+                                        <div class="lumise_form_content">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <strong class="lumise-product-price-wrp">
+                            Total: <span class="lumise-product-price"></span>
+                        </strong>
+                        <button id="lumise-cart-action" class="lumise-btn-primary" data-add="Add to cart" data-update="Update cart item" data-action="update-cart">
+                            <i class="lumisex-android-add"></i> Add to cart				</button>
+                        <div id="lumise-update-cart-confirm">
+                            <div>
+                                <img src="https://demo.lumise.com/core/assets/images/done.svg" alt="" />
+                                <em>Your cart has been updated!</em>
+                                <ul>
+                                    <li>
+                                        <a href="#details" data-func="details">
+                                            View cart details								</a>
+                                    </li>
+                                    <li>
+                                        <a href="#new" data-func="new">
+                                            Start new product								</a>
+                                    </li>
+                                </ul>
+                                <button class="lumise-btn-primary" data-func="checkout">
+                                    Checkout Now							<i class="lumisex-android-arrow-forward" data-func="checkout"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- Avalable hook: after_cart -->
+            </ul>
+        </div>
+        <div id="lumise-workspace">
+
+            <div id="lumise-left">
+                <div class="lumise-left-nav-wrp">
+                    <ul class="lumise-left-nav">
+                        <li data-tab="design">
+                            <i class="lumisex-android-color-palette"></i>
+                            Design				</li>
+                        <li data-tab="product" class="active">
+                            <i class="lumisex-tshirt-outline"></i>
+                            Product					</li>
+                        <li data-tab="templates" data-load="templates" >
+                            <i class="lumise-icon-star"></i>
+                            Templates					</li>
+                        <li data-tab="cliparts" data-load="cliparts" >
+                            <i class="lumise-icon-heart"></i>
+                            ClipArts					</li>
+                        <li data-tab="text" >
+                            <i class="lumisex-character"></i>
+                            Text					</li>
+                        <li data-tab="uploads" data-load="images" >
+                            <i class="lumise-icon-picture"></i>
+                            Images					</li>
+                        <li data-tab="shapes" data-load="shapes" >
+                            <i class="lumisex-diamond"></i>
+                            Shapes					</li>
+                        <li data-tab="drawing" >
+                            <i class="lumise-icon-note"></i>
+                            Drawing					</li>
+                        <li data-tab="layers" data-callback="layers" >
+                            <i class="lumise-icon-layers"></i>
+                            Layers					</li>
+                        <li data-tab="bug" title="Report bugs">
+                            <i class="lumisex-bug"></i>
+                        </li>
+                    </ul>
+                    <i class="lumisex-android-close active" id="lumise-side-close"></i>
+                </div>
+                <div id="lumise-product" class="lumise-tab-body-wrp active">
+                    <header>
+                        <name></name>
+                        <price></price>
+                        <sku></sku>
+                        <button class="lumise-btn white" id="lumise-change-product">
+                            Change product
+                            <i class="lumisex-arrow-swap"></i>
+                        </button>
+                        <desc><span></span>&nbsp;&nbsp;<a href="#more">More</a></desc>
+                    </header>
+                    <h3 data-view="color" style="display:none">Product color:</h3>
+                    <ul id="lumise-product-color" style="display:none">
+                        <li data-view="picker">
+                            <input type="search" placeholder="Click to select color" class="color" />
+                        </li>
+                    </ul>
+                </div>
+                <div id="lumise-templates" class="lumise-tab-body-wrp lumise-x-thumbn">
+                    <header>
+				<span class="lumise-templates-search">
+					<input type="search" id="lumise-templates-search-inp" placeholder="Search templates" />
+					<i class="lumisex-android-search"></i>
+				</span>
+                        <div class="lumise-template-categories" data-prevent-click="true">
+                            <button data-func="show-categories" data-type="templates">
+                                <span>All categories</span>
+                                <i class="lumisex-ios-arrow-forward"></i>
+                            </button>
+                        </div>
+                    </header>
+                    <div id="lumise-templates-list" class="smooth">
+                        <ul class="lumise-list-items">
+                            <i class="lumise-spinner white x3 mt2"></i>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lumise-cliparts" class="lumise-tab-body-wrp lumise-x-thumbn">
+                    <header>
+				<span class="lumise-cliparts-search">
+					<input type="search" id="lumise-cliparts-search-inp" placeholder="Search cliparts" />
+					<i class="lumisex-android-search"></i>
+				</span>
+                        <div class="lumise-clipart-categories" data-prevent-click="true">
+                            <button data-func="show-categories" data-type="cliparts">
+                                <span>All categories</span>
+                                <i class="lumisex-ios-arrow-forward"></i>
+                            </button>
+                        </div>
+                    </header>
+                    <div id="lumise-cliparts-list" class="smooth">
+                        <ul class="lumise-list-items">
+                            <i class="lumise-spinner white x3 mt2"></i>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lumise-shapes" class="lumise-tab-body-wrp smooth"></div>
+                <div id="lumise-text" class="lumise-tab-body-wrp smooth">
+                    <p class="gray">Click or drag to add text</p>
+
+                    <span draggable="true" data-act="add" data-ops='[{"fontFamily":"Anton","text": "CurvedText", "fontSize": 30, "font":["","regular"],"bridge":{"bottom":2,"curve":-4.5,"oblique":false,"offsetY":0.5,"trident":false},"type":"curvedText"}]'>
+				<img height="70" src="https://demo.lumise.com/core/assets/images/text-sample-curved.png" />
+			</span>
+                    <span draggable="true" data-act="add" data-ops='[{"fontFamily":"Anton","text": "10", "fontSize": 100, "font":["","regular"],"type":"i-text", "charSpacing": 40, "top": -50},{"fontFamily":"Poppins","text": "Messi", "fontSize": 30, "font":["","regular"],"type":"i-text", "charSpacing": 40, "top": 10}]' style="text-align: center;">
+				<img height="70" src="https://demo.lumise.com/core/assets/images/text-number.png" />
+			</span>
+                    <span draggable="true" data-act="add" data-ops='[{"fontFamily":"Anton","text": "Oblique","fontSize":60,"font":["","regular"],"bridge":{"bottom":4.5,"curve":10,"oblique":true,"offsetY":0.5,"trident":false},"type":"text-fx"}]'>
+				<img height="70" src="https://demo.lumise.com/core/assets/images/text-sample-oblique.png" />
+			</span>
+                    <span draggable="true" data-act="add" data-ops='[{"fontFamily":"Anton","text": "Bridge","fontSize":70,"font":["","regular"],"bridge":{"bottom":2,"curve":-4.5,"oblique":false,"offsetY":0.5,"trident":false},"type":"text-fx"}]'>
+				<img height="70" src="https://demo.lumise.com/core/assets/images/text-sample-bridge-1.png" />
+			</span>
+                    <span draggable="true" data-act="add" data-ops='[{"fontFamily":"Anton","text": "Bridge","fontSize":70,"font":["","regular"],"bridge":{"bottom":2,"curve":-2.5,"oblique":false,"offsetY":0.1,"trident":false},"type":"text-fx"}]'>
+				<img height="70" src="https://demo.lumise.com/core/assets/images/text-sample-bridge-2.png" />
+			</span>
+                    <span draggable="true" data-act="add" data-ops='[{"fontFamily":"Anton","text": "Bridge","fontSize":70,"font":["","regular"],"bridge":{"bottom":2,"curve":-3,"oblique":false,"offsetY":0.5,"trident":true},"type":"text-fx"}]'>
+				<img height="70" src="https://demo.lumise.com/core/assets/images/text-sample-bridge-3.png" />
+			</span>
+                    <span draggable="true" data-act="add" data-ops='[{"fontFamily":"Anton","text": "Bridge","fontSize":70,"font":["","regular"],"bridge":{"bottom":5,"curve":5,"oblique":false,"offsetY":0.5,"trident":false},"type":"text-fx"}]'>
+				<img height="70" src="https://demo.lumise.com/core/assets/images/text-sample-bridge-4.png" />
+			</span>
+                    <span draggable="true" data-act="add" data-ops='[{"fontFamily":"Anton","text": "Bridge","fontSize":70,"font":["","regular"],"bridge":{"bottom":2.5,"curve":2.5,"oblique":false,"offsetY":0.05,"trident":false},"type":"text-fx"}]'>
+				<img height="70" src="https://demo.lumise.com/core/assets/images/text-sample-bridge-5.png" />
+			</span>
+                    <span draggable="true" data-act="add" data-ops='[{"fontFamily":"Anton","text": "Bridge","fontSize":70,"font":["","regular"],"bridge":{"bottom":3,"curve":2.5,"oblique":false,"offsetY":0.5,"trident":true},"type":"text-fx"}]'>
+				<img height="70" src="https://demo.lumise.com/core/assets/images/text-sample-bridge-6.png" />
+			</span>
+                    <span id="lumise-text-mask-guide">
+				<img height="70" src="https://demo.lumise.com/core/assets/images/text-sample-mask.png" />
+			</span>
+                    <div id="lumise-text-ext"></div>
+                    <button class="lumise-btn mb2 lumise-more-fonts">Load more 1000+ fonts</button>
+                </div>
+                <div id="lumise-uploads" class="lumise-tab-body-wrp lumise-x-thumbn">
+                    <header class="images-from-socials lumise_form_group">
+                        <button class="active" data-nav="internal">
+                            <i class="lumise-icon-cloud-upload"></i>
+                            Upload				</button>
+                        <button data-nav="external">
+                            <i class="lumise-icon-magnifier"></i>
+                            Resources				</button>
+                    </header>
+                    <div data-tab="internal" class="active">
+                        <div id="lumise-upload-form">
+                            <i class="lumise-icon-cloud-upload"></i>
+                            <span>Click or drop images here</span>
+                            <input type="file" multiple="true" />
+                        </div>
+                        <div id="lumise-upload-list">
+                            <ul class="lumise-list-items"></ul>
+                        </div>
+                    </div>
+                    <div data-tab="external" id="lumise-external-images"></div>
+                </div>
+                <div id="lumise-drawing" class="lumise-tab-body-wrp lumise-left-form">
+                    <h3>Free drawing mode</h3>
+                    <div>
+                        <label>Size</label>
+                        <inp data-range="helper" data-value="1">
+                            <input id="lumise-drawing-width" data-callback="drawing" value="1" min="1" max="100" data-value="1" type="range" />
+                        </inp>
+                    </div>
+                    <div>
+                        <input id="lumise-drawing-color" placeholder="Click to choose color" type="search" class="color" />
+                        <span class="lumise-save-color" data-tip="true" data-target="drawing-color">
+					<i class="lumisex-android-add"></i>
+					<span>Save this color</span>
+				</span>
+                    </div>
+                    <div>
+                        <ul class="lumise-color-presets" data-target="drawing-color"></ul>
+                    </div>
+                    <div class="gray">
+				<span>
+					<i class="lumisex-android-bulb"></i>
+					Tips: Mouse wheel on the canvas to quick change the brush size				</span>
+                    </div>
+                </div>
+                <div id="lumise-layers" class="lumise-tab-body-wrp smooth">
+                    <ul></ul>
+                </div>
+                <div id="lumise-bug" class="lumise-tab-body-wrp lumise-left-form">
+                    <bug>
+                        <h3>Bug Reporting</h3>
+                        <p>Please let us know if you find any bugs on this design tool or just your opinion to improve the tool.</p>
+                        <textarea placeholder="Bug description (min 30 - max 1500 characters)" maxlength="1500" data-id="report-content"></textarea>
+                        <button class="lumise-btn submit">
+                            Send now <i class="lumisex-android-send"></i>
+                        </button>
+                        <p data-view="tips">
+                            Tips: If you want to send content with screenshots or videos, you can upload them to
+                            <a href="https://imgur.com" target=_blank>imgur.com</a>
+                            or any drive services and put links here.				</p>
+                        <center><i class="lumisex-bug"></i></center>
+                    </bug>
+                </div>
+                <div id="lumise-x-thumbn-preview">
+                    <header></header>
+                    <div></div>
+                    <footer></footer>
+                </div>
+            </div>
+            <div id="lumise-top-tools" data-navigation="" data-view="standard">
+
+                <ul class="lumise-top-nav left" data-mode="default">
+                    <li id="lumise-draft-status"></li>
+                </ul>
+
+                <ul class="lumise-top-nav left" data-mode="svg">
+                    <li data-tool="svg" id="lumise-svg-colors" data-callback="svg">
+                        <ul data-pos="left" data-view="sub">
+                            <li data-view="title">
+                                <h3>
+                                    <span>Fill options</span>
+                                    <i class="lumisex-android-close close" title="close"></i>
+                                </h3>
+                                <p class="flex">
+                                    <input type="search" placeholder="click to choose color" id="lumise-svg-fill" class="color" />
+                                    <span class="lumise-save-color" data-tip="true" data-target="svg-fill">
+							<i class="lumisex-android-add"></i>
+							<span>Save this color</span>
+						</span>
+                                </p>
+                                <ul id="lumise-color-presets" class="lumise-color-presets" data-target="svg-fill"></ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="lumise-top-nav right" data-mode="default">
+                    <li data-tool="callback" data-callback="qrcode">
+                        <span data-view="noicon">Create QRCode</span>
+                    </li>
+                    <li data-tool="snap">
+                        <span data-view="noicon">Auto snap</span>
+                        <ul data-pos="right" data-view="sub">
+                            <li>
+                                Auto snap mode					<div class="lumise-switch">
+                                <input id="lumise-auto-alignment" type="checkbox" value="" class="lumise-toggle-button">
+                                <span class="lumise-toggle-label" data-on="ON" data-off="OFF"></span>
+                                <span class="lumise-toggle-handle"></span>
+                            </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="lumise-top-nav left" data-mode="image">
+                    <li data-tool="replace">
+			<span data-tip="true">
+				<i class="lumisex-android-create"></i>
+				<span>Replacement image</span>
+			</span>
+                        <ul data-view="sub" data-pos="center" id="lumise-replacement-image">
+                            <li data-view="title">
+                                <h3>
+                                    <span>1200 x 344</span>
+                                    <i class="lumisex-android-close close" title="close"></i>
+                                </h3>
+                            </li>
+                            <li data-view="replacement">
+					<span>
+						<input type="radio" name="replace-image" id="replace-image-keep" checked value="0" />
+						<label for="replace-image-keep">Keep dimensions</label>
+					</span>
+                                <span>
+						<input type="radio" name="replace-image" id="replace-image-height" value="1" />
+						<label for="replace-image-height">Auto height</label>
+					</span>
+                                <span>
+						<input type="radio" name="replace-image" id="replace-image-width" value="2" />
+						<label for="replace-image-width">Auto width</label>
+					</span>
+                                <span>
+						<button>
+							<i class="lumisex-android-upload"></i> Upload new image						</button>
+					</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-tool="callback" data-callback="crop">
+			<span data-tip="true">
+				<i class="lumisex-crop"></i>
+				<span>Crop</span>
+			</span>
+                    </li>
+                    <li data-tool="masks" data-callback="select_mask">
+			<span data-tip="true">
+				<i class="lumisex-android-star-outline"></i>
+				<span>Mask</span>
+			</span>
+                        <ul data-view="sub" data-pos="center">
+                            <li data-view="title">
+                                <h3>
+                                    <span>Select mask layer</span>
+                                    <i class="lumisex-android-close close" title="close"></i>
+                                </h3>
+                            </li>
+                            <li data-view="list"></li>
+                            <li class="bttm">
+                                <button><i class="lumisex-android-close"></i> Clear Mask</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-tool="filter">
+			<span data-tip="true">
+				<i class="lumisex-erlenmeyer-flask-bubbles"></i>
+				<span>Remove background</span>
+			</span>
+                        <ul data-view="sub">
+                            <li data-view="title">
+                                <h3>
+                                    <span>Remove background</span>
+                                    <i class="lumisex-android-close close" title="close"></i>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <span>Deep: </span>
+                                    <inp data-range="helper" data-value="0">
+                                        <input class="nol" type="range" id="lumise-image-fx-deep" data-value="0" min="0" max="200" value="0" data-image-fx="deep" data-view="lumise" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <span>Mode: </span>
+                                    <select id="lumise-image-fx-mode" data-fx="mode">
+                                        <option value="light">Light Background</option>
+                                        <option value="dark">Dark Background</option>
+                                    </select>
+                                </h3>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-tool="advanced">
+			<span data-tip="true">
+				<i class="lumisex-wand"></i>
+				<span>Filters</span>
+			</span>
+                        <ul data-view="sub">
+                            <li data-view="title">
+                                <h3>
+                                    <span>Filters</span>
+                                    <i class="lumisex-android-close close" title="close"></i>
+                                </h3>
+                            </li>
+                            <li data-tool="filters">
+                                <h3 class="nob">
+                                    <ul id="lumise-image-fx-fx"><li data-fx="" style="background-position: 0px 0px;"><span>Original</span></li><li data-fx="bnw" style="background-position: -92px 0px;"><span>B&amp;W</span></li><li data-fx="satya" style="background-position: -184px 0px;"><span>Satya</span></li><li data-fx="doris" style="background-position: -276px 0px;"><span>Doris</span></li><li data-fx="sanna" style="background-position: -368px 0px;"><span>Sanna</span></li><li data-fx="vintage" style="background-position: -460px 0px;"><span>Vintage</span></li><li data-fx="gordon" style="background-position: 0px -92px;"><span>Gordon</span></li><li data-fx="carl" style="background-position: -92px -92px;"><span>Carl</span></li><li data-fx="shaan" style="background-position: -184px -92px;"><span>Shaan</span></li><li data-fx="tonny" style="background-position: -276px -92px;"><span>Tonny</span></li><li data-fx="peter" style="background-position: -368px -92px;"><span>Peter</span></li><li data-fx="greg" style="background-position: -460px -92px;"><span>Greg</span></li><li data-fx="josh" style="background-position: 0px -184px;"><span>Josh</span></li><li data-fx="karen" style="background-position: -92px -184px;"><span>Karen</span></li><li data-fx="melissa" style="background-position: -184px -184px;"><span>Melissa</span></li><li data-fx="salomon" style="background-position: -276px -184px;"><span>Salomon</span></li><li data-fx="sophia" style="background-position: -368px -184px;"><span>Sophia</span></li><li data-fx="adrian" style="background-position: -460px -184px;"><span>Adrian</span></li><li data-fx="roxy" style="background-position: 0px -276px;"><span>Roxy</span></li><li data-fx="singe" style="background-position: -92px -276px;"><span>Singe</span></li><li data-fx="borg" style="background-position: -184px -276px;"><span>Borg</span></li><li data-fx="ventura" style="background-position: -276px -276px;"><span>Ventura</span></li><li data-fx="andy" style="background-position: -368px -276px;"><span>Andy</span></li><li data-fx="vivid" style="background-position: -460px -276px;"><span>Vivid</span></li><li data-fx="purple" style="background-position: 0px -368px;"><span>Purple</span></li><li data-fx="thresh" style="background-position: -92px -368px;"><span>Thresh</span></li><li data-fx="aqua" style="background-position: -184px -368px;"><span>Aqua</span></li><li data-fx="edgewood" style="background-position: -276px -368px;" data-selected="true"><span>Edge wood</span></li><li data-fx="aladin" style="background-position: -368px -368px;"><span>Aladin</span></li><li data-fx="amber" style="background-position: -460px -368px;"><span>Amber</span></li><li data-fx="anne" style="background-position: 0px -460px;"><span>Anne</span></li><li data-fx="doug" style="background-position: -92px -460px;"><span>Doug</span></li><li data-fx="earl" style="background-position: -184px -460px;"><span>Earl</span></li><li data-fx="kevin" style="background-position: -276px -460px;"><span>Kevin</span></li><li data-fx="polak" style="background-position: -368px -460px;"><span>Polak</span></li><li data-fx="stan" style="background-position: -460px -460px;"><span>Stan</span></li></ul>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <span>Brightness: </span>
+                                    <inp data-range="helper" data-value="0">
+                                        <input type="range" id="lumise-image-fx-brightness" class="nol" data-value="0" min="-50" max="50" value="0" data-image-fx="brightness" data-view="lumise" data-range="0" data-between="true" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <span>Saturation: </span>
+                                    <inp data-range="helper" data-value="100">
+                                        <input type="range" id="lumise-image-fx-saturation" class="nol" data-value="100" min="0" max="100" value="100" data-image-fx="saturation" data-view="lumise" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <span>Contrast: </span>
+                                    <inp data-range="helper" data-value="0">
+                                        <input type="range" id="lumise-image-fx-contrast" class="nol" data-value="0" min="-50" max="50" value="0" data-image-fx="contrast" data-view="lumise" data-range="0" data-between="true" />
+                                    </inp>
+                                </h3>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-tool="callback" data-callback="imageFXReset">
+                        <span data-view="noicon">Clear Filters</span>
+                    </li>
+                </ul>
+
+                <ul class="lumise-top-nav left" data-mode="drawing">
+                    <li>
+                        <button id="lumise-discard-drawing" class="red mr1">
+                            <i class="lumisex-android-close"></i> Discard drawing (ESC)			</button>
+                        Click then drag the mouse to start drawing.			<b>Ctrl+Z</b> = undo, <b>Ctrl+Shift+Z</b> = redo
+                    </li>
+                </ul>
+
+                <ul class="lumise-top-nav left" data-mode="standard">
+                    <li data-tool="qrcode-text">
+			<span data-tip="true">
+				<i class="lumisex-qrcode-1"></i>
+				<span>QRCode text</span>
+				<input type="text" class="nol lumise-edit-text" id="lumise-qrcode-text" placeholder="Enter your text" />
+			</span>
+                    </li>
+                </ul>
+
+                <ul class="lumise-top-nav right" data-mode="standard">
+                    <li data-tool="fill">
+			<span data-tip="true">
+				<i class="lumisex-paintbucket"></i>
+				<span>Fill options</span>
+			</span>
+                        <ul data-pos="center" data-view="sub">
+                            <li data-view="title">
+                                <h3>
+                                    <span>Fill options</span>
+                                    <i class="lumisex-android-close close" title="close"></i>
+                                </h3>
+                                <p class="flex">
+                                    <input type="search" placeholder="click to choose color" id="lumise-fill" class="color" />
+                                    <span class="lumise-save-color" data-tip="true" data-target="fill">
+							<i class="lumisex-android-add"></i>
+							<span>Save this color</span>
+						</span>
+                                </p>
+                                <ul id="lumise-color-presets" class="lumise-color-presets" data-target="fill"></ul>
+                            </li>
+                            <li data-view="transparent">
+                                <h3 class="nob">
+                                    <span>Transparent: </span>
+                                    <inp data-range="helper" data-value="100%">
+                                        <input type="range" class="nol" id="lumise-transparent" data-value="100%" min="0" max="100" value="100" data-unit="%" data-ratio="0.01" data-action="opacity" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li data-view="stroke">
+                                <h3 class="nob">
+                                    <span>Stroke width: </span>
+                                    <inp data-range="helper" data-value="0">
+                                        <input type="range" class="nol" id="lumise-stroke-width" data-action="strokeWidth" data-unit="px" data-value="0" min="0" max="100" value="0" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li data-view="stroke">
+                                <h3 class="nob">
+                                    <span>Stroke color: </span>
+                                    <input type="search" class="color" placeholder="Select a color" id="lumise-stroke" />
+                                </h3>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-tool="arrange">
+			<span data-tip="true">
+				<i class="lumisex-send-to-back"></i>
+				<span>Arrange layers</span>
+			</span>
+                        <ul data-pos="center" data-view="sub">
+                            <li class="flex">
+                                <button data-arrange="back">
+                                    <i class="lumisex-android-remove"></i>
+                                    Back					</button>
+                                <button data-arrange="forward" class="last">
+                                    <i class="lumisex-android-add"></i>
+                                    Forward					</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-tool="position">
+			<span data-tip="true">
+				<i class="lumisex-android-apps"></i>
+				<span>Position</span>
+			</span>
+                        <ul data-pos="right" data-view="sub">
+                            <li data-view="title">
+                                <h3>
+                                    Layer position						<i class="lumisex-android-close close" title="close"></i>
+                                </h3>
+                            </li>
+
+                            <li data-position="cv" data-tip="true">
+                                <p><i class="lumisex-move-vertical"></i></p>
+                                <span>Center vertical</span>
+                            </li>
+
+                            <li data-position="tl" data-tip="true">
+                                <p><i class="lumisex-android-arrow-up _45deg"></i></p>
+                                <span>Top left</span>
+                            </li>
+                            <li data-position="tc" data-tip="true">
+                                <p><i class="lumisex-android-arrow-up"></i></p>
+                                <span>Top center</span>
+                            </li>
+                            <li data-position="tr" data-tip="true" class="mirX">
+                                <p><i class="lumisex-android-arrow-forward _135deg"></i></p>
+                                <span>Top right</span>
+                            </li>
+
+
+                            <li data-position="ch" data-tip="true" class="rota">
+                                <p><i class="lumisex-move-horizontal"></i></p>
+                                <span>Center Horizontal</span>
+                            </li>
+
+                            <li data-position="ml" data-tip="true">
+                                <p><i class="lumisex-android-arrow-back"></i></p>
+                                <span>Middle left</span>
+                            </li>
+                            <li data-position="mc" data-tip="true">
+                                <p><i class="lumisex-android-radio-button-off"></i></p>
+                                <span>Middle center</span>
+                            </li>
+                            <li data-position="mr" data-tip="true">
+                                <p><i class="lumisex-android-arrow-forward"></i></p>
+                                <span>Middle right</span>
+                            </li>
+
+                            <li data-position="" data-tip="true">
+                                <i class="lumise-icon-info"></i>
+                                <span>
+						Press &leftarrow; &uparrow; &rightarrow; &downarrow; to move 1 px, <br>Hit simultaneously SHIFT key to move 10px					</span>
+                            </li>
+                            <li data-position="bl" data-tip="true" class="mirX">
+                                <p><i class="lumisex-android-arrow-down _45deg"></i></p>
+                                <span>Bottom left</span>
+                            </li>
+                            <li data-position="bc" data-tip="true">
+                                <p><i class="lumisex-android-arrow-down"></i></p>
+                                <span>Bottom center</span>
+                            </li>
+                            <li data-position="br" data-tip="true">
+                                <p><i class="lumisex-android-arrow-down _45deg"></i></p>
+                                <span>Bottom right</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-tool="transform">
+			<span data-tip="true">
+				<i class="lumisex-android-options"></i>
+				<span>Transforms</span>
+			</span>
+                        <ul data-pos="right" data-view="sub">
+                            <li>
+                                <h3 class="nob">
+                                    <span>Rotate: </span>
+                                    <inp data-range="helper" data-value="0º">
+                                        <input type="range" id="lumise-rotate" data-value="0º" min="0" max="360" value="0" data-unit="º" data-range="0, 45, 90, 135, 180, 225, 270, 315" data-action="angle" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <span>Skew X: </span>
+                                    <inp data-range="helper" data-value="0">
+                                        <input class="nol" type="range" id="lumise-skew-x" data-value="0" min="-30" max="30" value="0" data-unit="" data-action="skewX" data-range="0" data-between="true" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <span>Skew Y: </span>
+                                    <inp data-range="helper" data-value="0">
+                                        <input class="nol" type="range" id="lumise-skew-y" data-value="0" min="-30" max="30" value="0" data-unit="" data-action="skewY" data-range="0" data-between="true" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li class="center">
+                                Flip X:
+                                <div class="lumise-switch mr2">
+                                    <input id="lumise-flip-x" type="checkbox" value="" class="lumise-toggle-button">
+                                    <span class="lumise-toggle-label" data-on="ON" data-off="OFF"></span>
+                                    <span class="lumise-toggle-handle"></span>
+                                </div>
+
+                                Flip Y:
+                                <div class="lumise-switch">
+                                    <input id="lumise-flip-y" type="checkbox" value="" class="lumise-toggle-button">
+                                    <span class="lumise-toggle-label" data-on="ON" data-off="OFF"></span>
+                                    <span class="lumise-toggle-handle"></span>
+                                </div>
+                                <p class="blockinl">
+                                    <i class="lumisex-android-bulb"></i>
+                                    Free transform by press SHIFT+&#10529;						<br>
+                                    <button id="lumise-reset-transform">
+                                        <i class="lumisex-arrows-ccw"></i>
+                                        Reset all transforms						</button>
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="lumise-top-nav left" data-mode="text" id="lumise-text-tools">
+                    <li data-tool="font">
+			<span data-tip="true">
+				<button class="dropdown">
+					<font style="font-family:Arial">Arial</font>
+				</button>
+				<span>Font family</span>
+			</span>
+                        <ul data-pos="center" data-func="fonts" data-view="sub">
+                            <li class="scroll smooth" id="lumise-fonts"></li>
+                            <li class="bttm">
+                                <button class="lumise-more-fonts"><i class="lumisex-android-open"></i> Get more fonts</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-tool="spacing">
+			<span data-tip="true">
+				<i class="lumisex-text f16"></i>
+				<span>Edit text</span>
+			</span>
+                        <ul data-pos="right" data-view="sub">
+                            <li data-view="title">
+                                <h3>
+                                    Edit text						<i class="lumisex-android-close close" title="Close"></i>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <textarea type="text" class="nol lumise-edit-text" placeholder="Enter your text"></textarea>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <span>Font size: </span>
+                                    <inp data-range="helper" data-value="16">
+                                        <input type="range" class="nol" id="lumise-font-size" data-action="fontSize" data-unit="px" data-value="16" min="6" max="144" value="16" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <span class="min100">Letter spacing </span>
+                                    <inp data-range="helper" data-value="100%">
+                                        <input type="range" class="nol" id="lumise-letter-spacing" data-value="100%" min="0" max="1000" value="100" data-unit="" data-action="charSpacing" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li>
+                                <h3 class="nob">
+                                    <span class="min100">Line height </span>
+                                    <inp data-range="helper" data-value="10">
+                                        <input type="range" class="nol" id="lumise-line-height" data-value="10" min="1" max="50" value="10"  data-action="lineHeight" data-unit="px" data-ratio="0.1" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li><button data-func="update-text-fx">UPDATE TEXT</button></li>
+                        </ul>
+                    </li>
+                    <li data-tool="text-effect">
+			<span data-tip="true">
+				<i class="lumisex-vector"></i>
+				<span>Text Effects</span>
+			</span>
+                        <ul data-pos="right" data-view="sub">
+                            <li data-view="title">
+                                <h3>
+                                    Text effects						<i class="lumisex-android-close close" title="Close"></i>
+                                </h3>
+                            </li>
+                            <li id="lumise-text-effect">
+                                <h3 class="nob mb1">
+                                    <textarea type="text" class="nol ml0 lumise-edit-text" placeholder="Enter your text"></textarea>
+                                    <button data-func="update-text-fx">UPDATE TEXT</button>
+                                </h3>
+                                <span data-sef="images">
+						<img data-effect="normal" src="https://demo.lumise.com/core/assets/images/text-effect-normal.png" height="80" data-selected="true" />
+						<img data-effect="curved" src="https://demo.lumise.com/core/assets/images/text-effect-curved.png" height="80" />
+						<img data-effect="bridge" src="https://demo.lumise.com/core/assets/images/text-effect-bridge.png" height="80" />
+						<img data-effect="oblique" src="https://demo.lumise.com/core/assets/images/text-effect-oblique.png" height="80" />
+					</span>
+                                <div class="lumise-switch" style="display: none;">
+                                    <input id="lumise-curved" type="checkbox" value="" class="lumise-toggle-button">
+                                    <span class="lumise-toggle-label" data-on="ON" data-off="OFF"></span>
+                                    <span class="lumise-toggle-handle"></span>
+                                </div>
+                            </li>
+                            <li data-func="curved">
+                                <h3 class="nob">
+                                    <span>Radius </span>
+                                    <inp data-range="helper" data-value="80">
+                                        <input type="range" class="nol" id="lumise-curved-radius" data-action="radius" data-value="80" min="-300" max="300" value="80" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li data-func="curved">
+                                <h3 class="nob">
+                                    <span>Spacing </span>
+                                    <inp data-range="helper" data-value="0">
+                                        <input type="range" class="nol" id="lumise-curved-spacing" data-action="spacing" data-value="0" min="0" max="100" value="0" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li data-func="text-fx">
+                                <h3 class="nob">
+                                    <span>Curve </span>
+                                    <inp data-range="helper" data-value="0">
+                                        <input type="range" class="nol" id="lumise-text-fx-curve" data-callback="textFX" data-fx="curve" data-value="0" min="-100" max="100" data-ratio="0.1" value="0" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li data-func="text-fx">
+                                <h3 class="nob">
+                                    <span>Height </span>
+                                    <inp data-range="helper" data-value="100">
+                                        <input type="range" class="nol" id="lumise-text-fx-bottom" data-callback="textFX" data-fx="bottom" data-value="100" min="1" max="150" data-ratio="0.1" value="100" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li data-func="text-fx">
+                                <h3 class="nob">
+                                    <span>Offset </span>
+                                    <inp data-range="helper" data-value="50">
+                                        <input type="range" class="nol" id="lumise-text-fx-offsety" data-callback="textFX" data-fx="offsetY" data-value="50" min="1" max="100" data-ratio="0.01" value="50" />
+                                    </inp>
+                                </h3>
+                            </li>
+                            <li data-func="text-fx">
+                                <h3 class="nob">
+                                    <span>Trident </span>
+                                    <div class="lumise-switch">
+                                        <input id="lumise-text-fx-trident" data-fx="trident" type="checkbox" value="" class="lumise-toggle-button">
+                                        <span class="lumise-toggle-label" data-on="ON" data-off="OFF"></span>
+                                        <span class="lumise-toggle-handle"></span>
+                                    </div>
+                                </h3>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sp"></li>
+                    <li data-tool="text-align">
+			<span data-tip="true">
+				<i class="lumisex-align-center" id="lumise-text-align"></i>
+				<span>Text align</span>
+			</span>
+                        <ul data-pos="center" data-view="sub">
+                            <li>
+                                <i class="lumisex-align-left text-format" data-align="left" title="Text align left"></i>
+                                <i class="lumisex-align-center text-format" data-align="center" title="Text align center"></i>
+                                <i class="lumisex-align-right text-format" data-align="right" title="Text align right"></i>
+                                <i class="lumisex-align-justify text-format" data-align="justify" title="Text align justify"></i>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="text-format" data-format="upper">
+			<span data-tip="true">
+				<i class="lumisex-letter"></i>
+				<span>Uppercase / Lowercase</span>
+			</span>
+                    </li>
+                    <li class="text-format" data-format="bold">
+			<span data-tip="true">
+				<i class="lumisex-bold"></i>
+				<span>Font weight bold</span>
+			</span>
+                    </li>
+                    <li class="text-format" data-format="italic">
+			<span data-tip="true">
+				<i class="lumisex-italic"></i>
+				<span>Text style italic</span>
+			</span>
+                    </li>
+                    <li class="text-format" data-format="underline">
+			<span data-tip="true">
+				<i class="lumisex-underline"></i>
+				<span>Text underline</span>
+			</span>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div id="lumise-main">
+                <div id="lumise-no-product">
+                    <p>Please select a product to start designing</p>						<button class="lumise-btn" id="lumise-select-product">
+                    <i class="lumisex-android-apps"></i> Select product						</button>
+                </div>
+            </div>
+            <div id="lumise-count-colors" title="Count colors"></div>
+            <div id="lumise-zoom-wrp">
+                <span>Zoom</span>
+                <inp data-range="helper" data-value="100%">
+                    <input type="range" id="lumise-zoom" data-value="100%" min="100" max="250" value="100" />
+                </inp>
+            </div>
+            <div id="lumise-zoom-thumbn">
+                <span></span>
+            </div>
+            <div id="lumise-stage-nav">
+                <ul></ul>
+            </div>
+            <div id="lumise-notices"></div>
+        </div>
+    </div>
+</div>
+<script>
+    function LumiseDesign (lumise) {
+        lumise.data = {
+            stages : {},
+            currency : "$",
+            switch_lang : 1,
+            thousand_separator : ",",
+            decimal_separator : ".",
+            number_decimals : "2",
+            currency_position : "1",
+            min_upload: 0,
+            max_upload: 0,
+            min_dimensions: ["50","50"],
+            max_dimensions: ["1500","1500"],
+            printings : [],
+            url : "https://demo.lumise.com/",
+            tool_url : "https://demo.lumise.com/editor.php",
+            upload_url : "https://demo.lumise.com/data/",
+            checkout_url : "https://demo.lumise.com/editor.php?lumise-router=cart",
+            ajax : "https://demo.lumise.com/editor.php?lumise-router=ajax",
+            assets : "https://demo.lumise.com/core/",
+            jquery : "1",
+            nonce : "NKTAQC",
+            editing: localStorage.getItem('LUMISE-EDITING'),
+            design : "",
+            product : "",
+            default_fonts: {"Oswald":["vietnamese%2Ccyrillic%2Clatin-ext%2Clatin","200%2C300%2Cregular%2C500%2C600%2C700"],"Anton":["vietnamese%2Clatin-ext%2Clatin","regular"],"Pacifico":["latin-ext%2Cvietnamese%2Clatin","regular"],"Quicksand":["latin-ext%2Cvietnamese%2Clatin","300%2Cregular%2C500%2C700"],"Righteous":["latin-ext%2Clatin","regular"],"Fredoka%20One":["latin","regular"],"Monoton":["latin","regular"],"Alex%20Brush":["latin-ext%2Clatin","regular"],"Petit%20Formal%20Script":["latin-ext%2Clatin","regular"],"Baloo%20Bhaina":["latin-ext%2Cvietnamese%2Coriya%2Clatin","regular"],"Oleo%20Script%20Swash%20Caps":["latin-ext%2Clatin","regular%2C700"],"Arizonia":["latin-ext%2Clatin","regular"],"Bungee%20Shade":["latin-ext%2Cvietnamese%2Clatin","regular"],"Pattaya":["latin-ext%2Cvietnamese%2Ccyrillic%2Cthai%2Clatin","regular"],"Spirax":["latin","regular"],"Flavors":["latin","regular"]},
+            fonts: [{"name":"Original","upload":"fonts\/Originalbyfnkfrsh-1.woff2"}],
+            js_lang : {"sure":"Are you sure?","save":"Save","edit":"Edit","remove":"Remove","cancel":"Cancel","reset":"Reset","stage":"Stage","front":"Front","back":"Back","left":"Left","right":"Right","loading":"Loading","importing":"Importing","apply":"Apply Now","error_403":"Your session is expired, Please reload your browser","01":"Center center","02":"Horizontal center","03":"Vertical center","04":"Square","05":"Are you sure that you want to make selected objects to one object?","06":"No layer","07":"Add new layer to use it as a mask","08":"Error, the active object should be covered by the mask layer","09":"Your QRCode text","10":"Create QR Code","11":"Enter your text or a link","12":"Select color for QR Code","13":"Choose color","14":"Visibility","15":"Lock layer","16":"Delete layer","17":"Error when select stage, missing configuration","18":"Invalid type of current active object","19":"Invalid type of current active object","20":"Error: missing configuration.","21":"Your design has been saved successful.","22":"The design has been removed","23":"Error : Your session is invalid. Please reload the page to continue.","24":"We just updated your expired session. Please redo your action","25":"Data structure error","26":"The design has been loaded successfully","27":"You have not created any designs yet","28":"New design has been created","29":"The design has been successfully cleaned!","30":"Enter the new design title","31":"The export data under JSON has been storaged in your clipboard.","32":"Only accept the file with type JSON that exported by our system.","33":"Error loading image ","34":"Double-click on the text to type","35":"Invalid size, please enter Width in 2.6-84.1 and Height in 3.7-118.9","36":"Error, File too large. Please try to set smaller size","37":"Your design is not saved. Are you sure you want to leave this page?","38":"Your design is not saved. Are you sure you want to load new design?","39":"The link has been copied to your clipboard","40":"Please save your design first to create link","41":"You have not granted permission to view or edit this design","42":"No items found","43":"Back to categories","44":"Please wait..","45":"Prev","46":"Next","47":"Delete this image","48":"Click to load this design","49":"Make a copy","50":"Export design","51":"Delete design","52":"Click to edit design title","53":"Warning: Images too large may slow down the tool","54":"Design Title","55":"Error while loading font","56":"Categories","57":"All categories","58":"Design options","59":"Keep current design","60":"Select design from templates","61":"Design from blank","62":"Start design now!","63":"Search product","64":"Print Technologies","65":"Side","66":"Quantity","67":"Prices Table","68":"Details","69":"More","70":"Successfull, view the full cart and checkout in the menu \"My Cart\"","71":"Your cart is empty","72":"Editing","73":"Your cart details","74":"Total","75":"Checkout","76":"Products","77":"Options","78":"Actions","79":"Updated","80":"Change product","81":"Colors","82":"Unsave","83":"File not found","84":"Your uploaded image","85":"Active","86":"Deactive","87":"Select product","88":"Loading fonts","89":"No category","90":"Categories","91":"Design templates","92":"Search design templates","93":"Select design","94":"Load more","95":"Remove template","96":"Error! Your design is empty, please add the objects","97":"Can not updated","98":"Are you sure that you want to remove this stage?","99":"Please select one of print method.","100":"Free","101":"Are you sure that you want to clear design?","102":"This field is required.","103":"Enter at least the minimum 1 quantity.","104":"Price","105":"Tags:","106":"Overwrite this design","107":"New Design","108":"Select an item bellow to save your design","109":"Your design has been saved successful!","110":"Draft was saved","111":"Load draft","112":"Load the draft designs which was saved before","113":"Successful! Your next changes will be updated to draft automatically","114":"Reset to default design","115":"You are editting an item from your shopping cart","116":"Your cart item was changed","117":"Save now","118":"Your cart item has been updated successful","119":"A cart item is being edited. Do you want to change product for starting new design?","120":"Error: Cart item not found","121":"Are you sure to delete this item?","122":"You are viewing the design of the order","123":"Error, could not load the design file of this order","124":"Yes, Start New","125":"No, Update Current","126":"Attribute name exists, please enter new name.","127":"Warning: Please fix issues on attributes marked as red before submit.","128":"Owhh, Please slow down. You seem to be sharing too much, waiting a few more minutes to continue","129":"Oops, no item found","130":"Copy link","131":"Open link","132":"Delete link","133":"Are you sure that you want to delete this link?","134":"There is no more item","135":"The link has been copied successfully","136":"The share link has been loaded successfully","137":"Less","138":"Advanced SVG Editor","139":"Colors Manage","140":"Add to list","141":"Select all","142":"Unselect all","143":"List of your colors","144":"No item found, please add new color to your list","145":"Add new color","146":"Delete selection","147":"The size of images you upload is invalid, your upload size is","148":"Your file upload is not allowed, please upload image files only","149":"Your total quantity is smaller the min quantity","150":"Your total quantity is larger the max quantity","151":"Enter the new label","152":"Enter number of color","153":"Add more column","154":"Reduce  column","155":"Enter the label","156":"Average","157":"item","158":"Click or drag to add shape","159":"Upload completed, please wait for a moment","160":"Failure to add: The minimum dimensions requirement","_front":"Front","_back":"Back","_left":"Left","_right":"Right"},
+            rtl : '0',
+            prefix_file : 'lumise',
+            text_direction : '',
+            print_types : {"multi":{"options":{"text":"Text","clipart":"Clipart","images":"Images","shape":"Shape","upload":"Upload"},"default":{"5":{"text":1,"clipart":1,"images":1,"shape":1,"upload":1}},"label":"Calculate price with Text, Clipart, Images, Upload","desc":"Set the price based on quantity range for each text, clipart, images, upload"},"color":{"options":{"full-color":"Full Color"},"default":{"1":{"full-color":1}},"label":"Calculate price with one color","desc":"Allow setup price with one color of area design. Price of printing = Price of one color * colors number."},"size":{"options":{"a0":"A0","a1":"A1","a2":"A2","a3":"A3","a4":"A4"},"default":{"5":{"a0":1,"a1":1,"a2":1,"a3":1,"a4":1}},"label":"Calculate price with size of area design","desc":"Allow setup price with paper size (A0, A1, A2, A3, A4, A5, A6). This size is size of area design."},"fixed":{"options":{"price":"Price"},"default":{"5":{"price":1}},"label":"Price Fixed","desc":"Price is fixed on each view (front, back, left, right) of product design."}},
+            enable_colors : "1",
+            colors : "#3fc7ba:#546e7a,#757575,#6d4c41,#f4511e,#fb8c00,#ffb300,#fdd835,#c0cA33,#a0ce4e,#7cb342,#43a047,#00897b,#00acc1,#3fc7ba,#039be5,#3949ab,#5e35b1,#8e24aa,#d81b60,#eeeeee,#3a3a3a"			};
+
+
+        var real_uri = window.location.href.split('?'),
+            reg_uri = lumise.data.tool_url.split('?');
+
+        if (real_uri[0] != reg_uri[0]) {
+            if (real_uri[1] !== undefined)
+                window.location = reg_uri[0]+'?'+real_uri[1];
+
+            else window.location = reg_uri[0];
+            return false;
+        } else return true;
+
+    };
+</script>
+<script src="https://demo.lumise.com/core/assets/js/jquery.min.js?version=1.6.4"></script>
+<script src="https://demo.lumise.com/core/assets/js/vendors.js?version=1.6.4"></script>
+<script src="https://demo.lumise.com/core/assets/js/app.js?version=1.6.4"></script>
+</body>
+</html>
